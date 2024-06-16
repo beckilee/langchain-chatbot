@@ -1,6 +1,8 @@
 # Chatbot to chat with the LangChain docs!
 # Uses ChatGPT, LangChain, Chroma, FastAPI, Streamlit
-# This file contains the code for the backend.
+
+# This file contains the code for the chatbot backend.
+# Use ngrok to make the API endpoints available on the internet.
 
 import chromadb
 import os
@@ -22,7 +24,7 @@ chroma_client = chromadb.PersistentClient(path="chromadb")
 # Instantiate persistent vector store
 langchain_chroma = Chroma(
     client=chroma_client,
-    collection_name="becki-langchain_collection",
+    collection_name="langchain_collection",
     embedding_function=embeddings,
     persist_directory="./chroma_db"
 )

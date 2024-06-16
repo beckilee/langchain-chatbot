@@ -1,6 +1,8 @@
 # Chatbot to chat with the LangChain docs!
 # Uses ChatGPT, LangChain, Chroma, FastAPI, Streamlit
-# This file contains the code for the Streamlit application.
+
+# This file contains the code for the Streamlit application,
+# which is the frontend to the chatbot.
 
 # Note: Had to downgrade streamlit from 1.35.0 to 1.32.0 to get the spinner to work properly;
 # see https://discuss.streamlit.io/t/repeated-assistant-answer-when-spinning/69129
@@ -38,6 +40,7 @@ if prompt := st.chat_input("Enter your question"):
     with st.chat_message("assistant", avatar=assistant_avatar):
         with st.spinner("Please wait..."):
                 json_response = requests.post(
+                    # Ephemeral ngrok endpoint URL
                     url="https://27ab-2601-147-4800-32f0-1d59-565f-9095-6564.ngrok-free.app/invoke",
                     json={"input": {"question": prompt}}
                 ).json()
